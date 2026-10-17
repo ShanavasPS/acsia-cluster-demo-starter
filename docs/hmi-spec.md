@@ -1,14 +1,21 @@
 # Instrument cluster HMI spec (MVP)
 
-Target: a 1080 × 600 landscape driver display, dark theme, running as an Android app.
+Target: the **instrument cluster window** of an Android Automotive OS (AAOS) car, a 528 × 692 px portrait window, dark theme.
 Signal names, units and ranges are in `docs/signals.csv`. The visual reference is `design/cluster.png`.
 
-## Layout
+## Where it runs
 
-- **Left:** speed gauge, 0–260 km/h, 270° arc. Digital speed in the centre, unit "km/h" below it.
-- **Right:** rev counter, 0–8000 rpm, 270° arc, red zone from 6500 rpm. Digital value in ×1000 rpm, one decimal.
-- **Centre column:** gear indicator (P R N D, the active gear highlighted), fuel bar with percentage, outside temperature.
-- **Top strip:** telltales, left to right: low fuel, engine check, battery, seatbelt, parking brake.
+- The car's cluster service shows our activity in the cluster window (fixed activity mode). The activity must be allowed while driving (distraction optimized), because the cluster is always visible.
+- The cluster OS draws over about 90 px on the left and right edges of the window, and draws its own status strip below it. Keep all content inside the middle 348 px.
+- The same activity must also run as a normal app on the main display, for automated end-to-end tests. There it shows the same layout, scaled to fit and centred.
+
+## Layout (528 × 692 design px)
+
+- **Top:** telltales in one row, left to right: low fuel, engine check, battery, seatbelt, parking brake.
+- **Main dial:** speed gauge, 0–260 km/h, 270° arc, about 330 px across. Digital speed in the centre, unit "km/h" below it. Gear indicator (P R N D, the active gear highlighted) in the open bottom of the dial.
+- **Lower left:** rev counter, 0–8000 rpm, 270° arc, about 190 px across, red zone from 6500 rpm. Digital value in ×1000 rpm, one decimal.
+- **Lower right:** fuel bar with percentage, outside temperature below it.
+- **Needles** are short pointers on the outer ring, so they never cross the digits.
 
 ## Behaviour
 

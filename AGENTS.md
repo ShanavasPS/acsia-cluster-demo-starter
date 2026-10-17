@@ -7,6 +7,12 @@ Android instrument cluster MVP. Kotlin, Jetpack Compose, single `app` module.
 - Unit tests (JVM, includes Robolectric Compose tests): `./gradlew testDebugUnitTest`
 - Install: `./gradlew installDebug`
 - Device: the cluster emulator is `emulator-5556`. Always set `ANDROID_SERIAL=emulator-5556` for adb, Gradle installs and Maestro (`maestro --device emulator-5556`). Never touch other devices.
+- The emulator is Android Automotive OS with a separate instrument cluster display.
+  - Cluster window display id: `adb shell dumpsys car_service --services ClusterHomeService | grep mClusterDisplayId`
+  - Show our activity in the cluster window: `adb shell cmd car_service start-fixed-activity-mode <clusterDisplayId> com.acsia.cluster <activity class>`
+  - Give the cluster back to the system: `adb shell cmd car_service stop-fixed-activity-mode <clusterDisplayId>`
+  - Screenshot the cluster: find the physical display named `EMU_display_1` with `adb shell dumpsys SurfaceFlinger --display-id`, then `adb exec-out screencap -p -d <that id>`
+  - Maestro only drives the main display. Run end-to-end flows there.
 
 ## Where things are
 - Requirements: `docs/hmi-spec.md`, `docs/signals.csv`
