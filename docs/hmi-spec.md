@@ -24,7 +24,7 @@ Dark navy, in the Acsia palette. `design/cluster.png` shows all of it; the value
 
 | Element | Look |
 |---|---|
-| Background | Radial glow: `#18304F` in the centre fading to `#0A1424` at the edges |
+| Background | Radial glow: `#18304F` in the centre fading to `#0A1424` at the edges. Over the bottom 120 px it fades on to black `#000000`, so it meets the cluster OS strip below the window without an edge |
 | Dial face | Inside each ring, `#10203A` in the centre fading to transparent at the ring |
 | Dial ring (track) | `#1B2C48` |
 | Ticks | `#4D6C96` |
