@@ -1,0 +1,10 @@
+name,type,unit,min,max,rate_hz,timeout_ms,description
+vehicle_speed,float,km/h,0,260,10,500,Vehicle speed over ground
+engine_rpm,float,rpm,0,8000,10,500,Engine speed
+gear,enum,,,,2,1000,"P, R, N or D"
+fuel_level_pct,float,%,0,100,1,3000,Fuel level
+outside_temp_c,float,°C,-40,60,0.2,10000,Outside air temperature
+tt_engine_check,bool,,,,2,1000,Engine check request
+tt_battery,bool,,,,2,1000,Battery fault
+tt_seatbelt,bool,,,,2,1000,Driver seatbelt unfastened
+tt_parking_brake,bool,,,,2,1000,Parking brake applied
