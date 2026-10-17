@@ -12,7 +12,7 @@ Signal names, units and ranges are in `docs/signals.csv`. The visual reference i
 ## Layout (528 × 692 design px)
 
 - **Top:** telltales in one row, left to right: low fuel, engine check, battery, seatbelt, parking brake.
-- **Main dial:** speed gauge, 0–260 km/h, 270° arc, about 330 px across. Digital speed in the centre, unit "km/h" below it. Gear indicator (P R N D, the active gear highlighted) in the open bottom of the dial.
+- **Main dial:** speed gauge, 0–160 mph, 270° arc, about 330 px across. Digital speed in the centre, unit "mph" below it. Gear indicator (P R N D, the active gear highlighted) in the open bottom of the dial.
 - **Lower left:** rev counter, 0–8000 rpm, 270° arc, about 190 px across, red zone from 6500 rpm. Digital value in ×1000 rpm, one decimal.
 - **Lower right:** fuel bar with percentage, outside temperature below it.
 - **Needles** are short pointers on the outer ring, so they never cross the digits.
@@ -20,7 +20,7 @@ Signal names, units and ranges are in `docs/signals.csv`. The visual reference i
 ## Behaviour
 
 1. **Startup.** On launch all telltales light for 1.5 s (bulb check), the needles sweep to full scale and back, then the cluster shows live values.
-2. **Speed.** Needle and digits follow `vehicle_speed`. Display rounds to whole km/h. The needle must move smoothly; no visible stepping at 10 Hz input.
+2. **Speed.** Needle and digits follow `vehicle_speed`. The signal is in km/h; the cluster shows mph (1 mph = 1.609344 km/h). Display rounds to whole mph. Above 160 mph the needle stays at the end of the scale. The needle must move smoothly; no visible stepping at 10 Hz input.
 3. **RPM.** Needle follows `engine_rpm`. The arc turns red above 6500 rpm.
 4. **Gear.** Shows `gear`. Unknown values show "–".
 5. **Fuel.** Bar and percentage follow `fuel_level_pct`. At or below 10 % the low-fuel telltale turns on in **amber** within 1 s. It turns off above 12 % (hysteresis).
