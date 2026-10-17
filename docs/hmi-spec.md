@@ -12,10 +12,11 @@ Signal names, units and ranges are in `docs/signals.csv`. The visual reference i
 ## Layout (528 × 692 design px)
 
 - **Top:** telltales in one row, left to right: low fuel, engine check, battery, seatbelt, parking brake.
-- **Main dial:** speed gauge, 0–160 mph, 270° arc, about 330 px across. Digital speed in the centre, unit "mph" below it. Gear indicator (P R N D, the active gear highlighted) in the open bottom of the dial.
-- **Lower left:** rev counter, 0–8000 rpm, 270° arc, about 190 px across, red zone from 6500 rpm. Digital value in ×1000 rpm, one decimal.
+- **Main dial:** speed gauge, 0–160 mph, 270° arc, about 330 px across. One tick every 20 mph (9 ticks), no minor ticks. Digital speed in the centre, unit "mph" below it. Gear indicator (P R N D, the active gear highlighted) in the open bottom of the dial.
+- **Lower left:** rev counter, 0–8000 rpm, 270° arc, about 190 px across, red zone from 6500 rpm. One tick every 500 rpm (17 ticks), all the same length. Digital value in ×1000 rpm, one decimal.
 - **Lower right:** fuel bar with percentage, outside temperature below it.
-- **Needles** are short pointers on the outer ring, so they never cross the digits.
+- **Ticks** are short and sit just inside the ring.
+- **Needles** are short pointers just inside the ring, not on it: each runs inwards from over the ticks, and stops well short of the digits.
 
 ## Visual style
 
