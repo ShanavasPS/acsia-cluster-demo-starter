@@ -1,5 +1,5 @@
 #!/bin/bash
-# Leaves the emulator clean for a live run from step-0: car parked, cluster window handed back,
+# Leaves the emulator clean for a live run from the start: car parked, cluster window handed back,
 # cluster app removed, adb root off. The showcase stays installed.
 set -uo pipefail
 source "$(dirname "$0")/common.sh"

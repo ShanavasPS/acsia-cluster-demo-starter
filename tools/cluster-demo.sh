@@ -7,8 +7,8 @@
 #
 # Each lap: park, pull away, 80 mph, slow to 40 mph, stop.
 # The driving loop runs on the emulator itself, so it keeps going even if this terminal is busy.
-# Needs the app installed. "car" mode needs the step-9 build, which reads live vehicle data.
-# Our rpm gauge shows "--" unless the app is a privileged install; the cluster OS strip still shows rpm.
+# Needs the app installed. "car" mode needs a build that reads live vehicle data; until then use "replay".
+# Our rpm gauge shows "--": rpm needs a privileged system app. The cluster OS strip still shows rpm.
 set -uo pipefail
 source "$(cd "$(dirname "$0")" && pwd)/env.sh"
 MODE=${1:-car}
