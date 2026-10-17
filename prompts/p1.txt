@@ -1,0 +1,10 @@
+Read docs/hmi-spec.md and docs/signals.csv.
+We are building an Android instrument cluster MVP.
+
+Ask me questions until the scope is clear.
+Then write docs/plan.md with:
+- features, each with an ID (F-01, F-02…)
+- non-goals for this MVP
+- acceptance criteria per feature
+
+Do not write any code yet.

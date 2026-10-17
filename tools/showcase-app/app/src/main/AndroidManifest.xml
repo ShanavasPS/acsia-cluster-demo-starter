@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Live line from the car. Speed and fuel are runtime permissions: grant them with adb. -->
+    <uses-permission android:name="android.car.permission.CAR_SPEED" />
+    <uses-permission android:name="android.car.permission.CAR_ENERGY" />
+    <uses-permission android:name="android.car.permission.CAR_INFO" />
+    <uses-permission android:name="android.car.permission.CAR_POWERTRAIN" />
+
+    <application
+        android:label="Acsia demo"
+        android:theme="@android:style/Theme.Material.NoActionBar">
+        <uses-library android:name="android.car" android:required="false" />
+        <!-- Registers as the car's maps app, so the launcher shows it in its large map panel. -->
+        <activity
+            android:name=".ShowcaseActivity"
+            android:exported="true"
+            android:resizeableActivity="true">
+            <meta-data android:name="distractionOptimized" android:value="true" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.APP_MAPS" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
