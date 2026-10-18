@@ -37,7 +37,11 @@ This is the starting point: the requirements, the design and the tools, with no 
    Open a new terminal and check it with `claude --version`. Then run `claude` and log in through the browser. It needs a Claude Pro, Max, Team or Enterprise plan, or a Console account. Full instructions: https://code.claude.com/docs/en/setup
 3. **Install the Android SDK** (Android Studio does it) with the command-line tools, and **JDK 17** for Gradle. The scripts find the SDK in `$ANDROID_HOME`, `$ANDROID_SDK_ROOT`, `~/Library/Android/sdk` (macOS) or `~/Android/Sdk` (Linux).
 4. **Linux only:** the emulator needs KVM. Enable virtualisation in the BIOS, then `sudo usermod -aG kvm $USER` and log out and in. `ls -l /dev/kvm` should show you can write to it.
-5. **Start the emulator.** Run `claude` in this repo and ask it to "bring up the AAOS emulator", or run the script yourself. The first run downloads the system image and creates the AVD:
+5. **Start the emulator.** Run `claude` in this repo, then type:
+   ```
+   /aaos-cluster start
+   ```
+   The first run downloads the system image and creates the AVD. Without Claude Code, run the script yourself:
    ```sh
    .claude/skills/aaos-cluster/scripts/start.sh
    ```
@@ -47,17 +51,19 @@ This is the starting point: the requirements, the design and the tools, with no 
 
 Start Claude Code in this repo and give it `prompts/p1.txt`. Each prompt takes the project one step further: plan, technical plan, test cases, tests, code, a run on the emulator, an end-to-end test, a review and live vehicle data.
 
-Once there is app code, show it in the cluster window with the car driving. This builds the repo as it is now:
+Once there is app code, show it in the cluster window with the car driving. In Claude Code, type this; it builds the repo as it is now:
 
-```sh
-.claude/skills/aaos-cluster/scripts/demo.sh
+```
+/aaos-cluster demo
 ```
 
 Park the car and remove the app again:
 
-```sh
-.claude/skills/aaos-cluster/scripts/reset.sh
 ```
+/aaos-cluster reset
+```
+
+`/aaos-cluster status` shows what the emulator is doing, and `/aaos-cluster stop` shuts it down. Each one runs a script in `.claude/skills/aaos-cluster/scripts/` (`demo.sh`, `reset.sh`, `status.sh`, `stop.sh`), which you can also run yourself.
 
 ## Build and test
 
