@@ -26,10 +26,13 @@ This is the starting point: the requirements, the design and the tools, with no 
    cd acsia-cluster-demo-starter
    ```
    To get prompts added later in the demo, run `git pull` in this folder.
-2. **Install Claude Code** (macOS 13+, Ubuntu 20.04+, Debian 10+, or WSL), using one of:
+2. **Install Claude Code** (macOS 13+, Ubuntu 20.04+, Debian 10+, or WSL). The native installer is recommended and updates itself:
    ```sh
-   curl -fsSL https://claude.ai/install.sh | bash     # native installer, recommended; updates itself
-   brew install --cask claude-code                     # Homebrew on macOS; update with: brew upgrade claude-code
+   curl -fsSL https://claude.ai/install.sh | bash
+   ```
+   Or, on macOS, with Homebrew (update it later with `brew upgrade claude-code`):
+   ```sh
+   brew install --cask claude-code
    ```
    Open a new terminal and check it with `claude --version`. Then run `claude` and log in through the browser. It needs a Claude Pro, Max, Team or Enterprise plan, or a Console account. Full instructions: https://code.claude.com/docs/en/setup
 3. **Install the Android SDK** (Android Studio does it) with the command-line tools, and **JDK 17** for Gradle. The scripts find the SDK in `$ANDROID_HOME`, `$ANDROID_SDK_ROOT`, `~/Library/Android/sdk` (macOS) or `~/Android/Sdk` (Linux).
