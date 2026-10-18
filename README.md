@@ -17,13 +17,15 @@ This is the starting point: the requirements, the design and the tools, with no 
 
 ## Setup (macOS or Linux)
 
-1. **Clone this repo.** You need access to it on GitHub first; ask for an invitation, then accept it from the email or https://github.com/notifications. Clone it with SSH, or with HTTPS if you have no SSH key on GitHub:
+1. **Clone this repo.** You need access to it on GitHub first; ask for an invitation, then accept it from the email or https://github.com/notifications. Then clone it:
    ```sh
-   git clone git@github.com:ShanavasPS/acsia-cluster-demo-starter.git
-   git clone https://github.com/ShanavasPS/acsia-cluster-demo-starter.git   # or HTTPS
+   git clone https://github.com/ShanavasPS/acsia-cluster-demo-starter.git
+   ```
+   Git asks for your GitHub username and a personal access token, not your password; `gh auth login` with the GitHub CLI sets this up for you. Then go into the folder:
+   ```sh
    cd acsia-cluster-demo-starter
    ```
-   HTTPS asks for your GitHub username and a personal access token, not your password; `gh auth login` with the GitHub CLI sets this up for you. To get prompts added later in the demo, run `git pull` in this folder.
+   To get prompts added later in the demo, run `git pull` in this folder.
 2. **Install Claude Code** (macOS 13+, Ubuntu 20.04+, Debian 10+, or WSL), using one of:
    ```sh
    curl -fsSL https://claude.ai/install.sh | bash     # native installer, recommended; updates itself
