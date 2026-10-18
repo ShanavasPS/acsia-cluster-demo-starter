@@ -34,7 +34,15 @@ This is the starting point: the requirements, the design and the tools, with no 
    ```sh
    brew install --cask claude-code
    ```
-   Open a new terminal and check it with `claude --version`. Then run `claude` and log in through the browser. It needs a Claude Pro, Max, Team or Enterprise plan, or a Console account. Full instructions: https://code.claude.com/docs/en/setup
+   Open a new terminal and check that it installed:
+   ```sh
+   claude --version
+   ```
+   Then start it and log in through the browser when it asks. It needs a Claude Pro, Max, Team or Enterprise plan, or a Console account:
+   ```sh
+   claude
+   ```
+   Full instructions: https://code.claude.com/docs/en/setup
 3. **Install the Android SDK** (Android Studio does it) with the command-line tools, and **JDK 17** for Gradle. The scripts find the SDK in `$ANDROID_HOME`, `$ANDROID_SDK_ROOT`, `~/Library/Android/sdk` (macOS) or `~/Android/Sdk` (Linux).
 4. **Linux only:** the emulator needs KVM. Enable virtualisation in the BIOS, then `sudo usermod -aG kvm $USER` and log out and in. `ls -l /dev/kvm` should show you can write to it.
 5. **Start the emulator.** Run `claude` in this repo, then type:
