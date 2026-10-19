@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PERF running</title>
+  <style>body { margin: 0; background: #000; } #cluster { width: 528px; height: 692px; position: relative; overflow: hidden; }</style>
+</head>
+<body>
+  <!-- F-13: tools/perf-check.sh opens this page in headless Chrome, in real time, and reads the
+       result from the page title: "PERF fps=<avg> longest=<ms> firstLive=<ms> mounted=<ms>"
+       or "PERF error=<message>". firstLive is measured from page open, as the spec asks;
+       mounted says how much of it was loading the page. -->
+  <div id="cluster"></div>
+  <script>
+    // An error while an app file loads would otherwise show up only as "Cluster.mount missing".
+    window.addEventListener("error", (e) => { if (e.message) document.title = "PERF error=" + e.message; });
+  </script>
+  <script src="../docs/signals.csv.js"></script>
+  <script src="../sim/drive-cycle.csv.js"></script>
+  <script src="app-scripts.js"></script>
+  <script>
+    (function () {
+      "use strict";
+      const MEASURE_MS = 10000;
+      const finish = (text) => { document.title = "PERF " + text; };
+      const longTasks = [];   // { start, duration }, delivered asynchronously
+      try {
+        new PerformanceObserver((list) => {
+          for (const e of list.getEntries()) longTasks.push({ start: e.startTime, duration: e.duration });
+        }).observe({ type: "longtask", buffered: true });
+      } catch (e) { /* no long-task support: nothing is recorded */ }
+
+      window.addEventListener("load", () => {
+        if (document.title !== "PERF running") return;   // a load error was already reported
+        if (!window.Cluster || typeof window.Cluster.mount !== "function") {
+          finish("error=Not implemented yet: Cluster.mount");
+          return;
+        }
+        let app;
+        const mounted = performance.now();
+        try { app = window.Cluster.mount(document.getElementById("cluster")); }
+        catch (e) { finish("error=" + e.message); return; }
+
+        (function waitLive() {
+          if (app && typeof app.firstLiveAt === "number") return measure(app.firstLiveAt);
+          if (performance.now() - mounted > 5000) return finish("error=no live frame within 5 s of mount (app.firstLiveAt not set)");
+          setTimeout(waitLive, 50);
+        })();
+
+        function measure(firstLive) {
+          let frames = 0;
+          const t0 = performance.now();
+          (function count() {
+            frames++;
+            if (performance.now() - t0 < MEASURE_MS) return requestAnimationFrame(count);
+            const t1 = performance.now();
+            // Only tasks that ran during the drive count, whenever they were delivered.
+            setTimeout(() => {
+              const longest = Math.max(0, ...longTasks.filter((t) => t.start >= t0 && t.start < t1).map((t) => t.duration));
+              finish(`fps=${(frames / ((t1 - t0) / 1000)).toFixed(1)} longest=${Math.round(longest)} firstLive=${Math.round(firstLive)} mounted=${Math.round(mounted)}`);
+            }, 200);
+          })();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

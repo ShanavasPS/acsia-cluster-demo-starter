@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Cluster tests</title>
+  <style>
+    body { margin: 16px; background: #05080F; color: #C9D6E8; font: 13px/1.5 ui-monospace, Menlo, monospace; }
+    #cluster-slot { position: absolute; left: -10000px; top: 0; width: 528px; height: 692px; }
+    #cluster { width: 528px; height: 692px; position: relative; overflow: hidden; }
+    #results { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h1>Cluster tests</h1>
+  <p>Run them with <code>tools/run-tests.sh</code>. Opened by hand, the tests that read files need Chrome started with --allow-file-access-from-files.</p>
+  <pre id="results">Running…</pre>
+  <div id="cluster-slot"></div>
+
+  <!-- The runner first, so an error while any later file loads is reported as a failure. -->
+  <script src="runner.js"></script>
+
+  <!-- Data files, as on the real page. -->
+  <script src="../docs/signals.csv.js"></script>
+  <script src="../sim/drive-cycle.csv.js"></script>
+
+  <!-- The app, without starting it. -->
+  <script src="app-scripts.js"></script>
+
+  <!-- Helpers and tests. -->
+  <script src="helpers.js"></script>
+  <script src="unit/csv.test.js"></script>
+  <script src="unit/spec.test.js"></script>
+  <script src="unit/replay.test.js"></script>
+  <script src="unit/store.test.js"></script>
+  <script src="unit/derive.test.js"></script>
+  <script src="unit/startup.test.js"></script>
+  <script src="ui/layout.test.js"></script>
+  <script src="ui/gauges.test.js"></script>
+  <script src="ui/indicators.test.js"></script>
+  <script src="ui/startup.test.js"></script>
+  <script src="ui/debug.test.js"></script>
+  <script src="page.test.js"></script>
+</body>
+</html>
