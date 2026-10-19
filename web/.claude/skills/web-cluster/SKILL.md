@@ -15,7 +15,7 @@ All in `scripts/` next to this file. Run them from anywhere.
 |---|---|---|
 | Open the cluster | `scripts/start.sh` | Opens `index.html` in the default browser. The car drives in a loop. |
 | Open it parked | `scripts/start.sh parked` | The car waits in P; Drive below the window starts the loop. |
-| Open it without a car | `scripts/start.sh off` | `window.car` is absent, so the app must replay `sim/drive-cycle.csv` itself (like `cluster-demo.sh replay`). |
+| Open it without a car | `scripts/start.sh off` | `window.car` is absent. For the MVP the app replays `sim/drive-cycle.csv` in every mode; this mode matters once it reads the car (the later live-data step). |
 | Screenshot | `scripts/screenshot.sh [out.png] [seconds]` | The cluster window alone, 528 × 692, a few seconds into the drive, with headless Chrome. Needs Chrome or Chromium. |
 
 There is nothing to stop: closing the tab ends it. After the app changes, reload the tab or run `start.sh` again.
@@ -32,7 +32,7 @@ scripts/screenshot.sh <scratchpad>/cluster.png
 |---|---|
 | The page | `index.html`: the cluster window (`#cluster`, 528 × 692) and the car's controls below it |
 | The simulated car | `car/car.js`, as `window.car`: `get(name)`, `subscribe(name, callback)`, `drive()`, `park()`, `driving`. Signals as in `docs/signals.csv`, speed in km/h, each at its rate. Same laps as `cluster-demo.sh` |
-| The app | `app/`: the starter only draws "Cluster" on black, like the Android starter |
+| The app | `app/`: at the start it only draws "Cluster" on black, like the Android starter; the demo builds the cluster here |
 | Data files | `docs/signals.csv` and `sim/drive-cycle.csv`, also bundled as `.csv.js` into `window.FILES`. After changing a CSV run `tools/bundle-csv.sh` |
 | URL options | `?car=parked`, `?car=off`, `?view=cluster` (the window alone, for screenshots) |
 

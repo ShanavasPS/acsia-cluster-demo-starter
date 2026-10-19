@@ -17,5 +17,5 @@ echo "Opened file://$PAGE$QUERY"
 case "$MODE" in
   drive) echo "The car drives in a loop. Park and Drive are below the cluster window." ;;
   parked) echo "The car is parked. Press Drive below the cluster window to start the loop." ;;
-  off) echo "No car: the app has to replay sim/drive-cycle.csv by itself." ;;
+  off) echo "No car. The MVP replays sim/drive-cycle.csv whatever the mode; this matters once the app reads the car." ;;
 esac

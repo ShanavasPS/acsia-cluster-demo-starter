@@ -22,7 +22,7 @@ open index.html
 
 On Linux, `xdg-open index.html`. Or double-click `index.html`.
 
-The page shows the cluster window with the car's controls below it. The car drives in a loop (park, pull away, 80 mph, slow to 40 mph, stop), and the line next to the buttons shows what it reports. Add `?car=parked` to start parked, or `?car=off` for no car at all.
+The page shows the cluster window with the car's controls below it. The car drives in a loop (park, pull away, 80 mph, slow to 40 mph, stop), and the line next to the buttons shows what it reports. Add `?car=parked` to start parked, or `?car=off` for no car at all. For this MVP the cluster replays its recorded drive and does not follow the car; that comes in a later step.
 
 ## Running the demo with Claude Code
 

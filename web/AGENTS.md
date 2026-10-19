@@ -6,8 +6,10 @@ This folder is separate from the Android app in the repo root. The Android `AGEN
 
 ## Commands
 - Run: open `index.html` in a browser (`open index.html` on macOS, `xdg-open index.html` on Linux). Reload the page after a change.
-- Car modes: `index.html` drives in a loop, `?car=parked` starts parked, `?car=off` has no car (the app replays its recording).
+- Car modes: `index.html` drives in a loop, `?car=parked` starts parked, `?car=off` has no car. For this MVP the app replays `sim/drive-cycle.csv` in all three modes and ignores the car; the readout under the window shows what the car reports, which is not what the cluster shows. The modes matter for the later live-data step.
 - Screenshot the cluster window only: `index.html?view=cluster` shows it at 528 × 692 with nothing around it.
+- Tests: `tools/run-tests.sh` (headless Chrome; exit 0 only when all pass), `tools/run-tests.sh TC-08` for one feature. What the tests expect from the app is in `tests/README.md`.
+- Performance: `tools/perf-check.sh` (about 15 s, real time).
 - After changing a CSV: `tools/bundle-csv.sh` regenerates its `.csv.js`.
 
 ## How the page is put together
