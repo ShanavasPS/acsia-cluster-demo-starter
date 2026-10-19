@@ -8,6 +8,7 @@ Signal names, units and ranges are in `docs/signals.csv`. The visual reference i
 - `index.html` is the car: it shows the cluster window (`#cluster`, 528 × 692 px) and simulates the vehicle. The app draws only inside `#cluster`, and its styles must not reach outside it.
 - The page is opened straight from disk (`file://`), with no server, build step or packages. So the app is plain HTML, CSS and JavaScript in classic `<script>` tags: no `import`, no `fetch`. Data files are read from `window.FILES` (see Signal source).
 - It must run in current Chrome, Safari and Firefox. The page may scale the window to fit the browser; the app always lays out at 528 × 692.
+- The design is shared with the Android version, where the car's cluster OS draws over about 90 px on the left and right edges. Keep all content inside the middle 348 px so both look the same.
 
 ## Layout (528 × 692 design px)
 
@@ -24,7 +25,7 @@ Dark navy, in the Acsia palette. `design/cluster.png` shows all of it; the value
 
 | Element | Look |
 |---|---|
-| Background | Radial glow: `#18304F` in the centre fading to `#0A1424` at the edges. Over the bottom 120 px it fades on to black `#000000`, so it meets the cluster OS strip below the window without an edge |
+| Background | Radial glow: `#18304F` in the centre fading to `#0A1424` at the edges. Over the bottom 120 px it fades on to black `#000000`, so the window meets whatever is below it without a hard edge |
 | Dial face | Inside each ring, `#10203A` in the centre fading to transparent at the ring |
 | Dial ring (track) | `#1B2C48` |
 | Ticks | `#4D6C96` |
@@ -39,7 +40,7 @@ Dark navy, in the Acsia palette. `design/cluster.png` shows all of it; the value
 
 ## Behaviour
 
-1. **Startup.** On launch all telltales light for 1.5 s (bulb check), the needles sweep to full scale and back, then the cluster shows live values.
+1. **Startup.** On launch all telltales light for 1.5 s (bulb check), the needles sweep to full scale and back, then the cluster shows live values. During startup the digits show zero and the other readouts are blank; nothing shows "--".
 2. **Speed.** Needle and digits follow `vehicle_speed`. The signal is in km/h; the cluster shows mph (1 mph = 1.609344 km/h). Display rounds to whole mph. Above 160 mph the needle stays at the end of the scale. The needle must move smoothly; no visible stepping at 10 Hz input.
 3. **RPM.** Needle follows `engine_rpm`. The arc turns red above 6500 rpm.
 4. **Gear.** Shows `gear`. Unknown values show "–".
@@ -52,7 +53,7 @@ Dark navy, in the Acsia palette. `design/cluster.png` shows all of it; the value
 
 For the MVP, signals come from replaying `sim/drive-cycle.csv` in a loop at its recorded timing. Its text is in `window.FILES["sim/drive-cycle.csv"]`, and `docs/signals.csv` is in `window.FILES["docs/signals.csv"]`. The source must sit behind an interface so a vehicle source (the simulated car, `window.car`) can replace it later.
 
-The app must let a tester override any signal from the browser console, for automated tests.
+The app must let a tester override any signal from the browser console, for automated tests. An override holds until the tester clears it.
 
 ## Performance
 
