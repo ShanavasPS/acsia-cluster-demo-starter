@@ -73,6 +73,10 @@ Park the car and remove the app again:
 
 `/aaos-cluster status` shows what the emulator is doing, and `/aaos-cluster stop` shuts it down. Each one runs a script in `.claude/skills/aaos-cluster/scripts/` (`demo.sh`, `reset.sh`, `status.sh`, `stop.sh`), which you can also run yourself.
 
+## Web version (nothing to install)
+
+`web/` has the same cluster as a web page: plain HTML, CSS and JavaScript, with a simulated car. It needs only a browser: no Android SDK, JDK or emulator. Open `web/index.html`, or run `claude` in `web/` and type `/web-cluster start`. See `web/README.md`.
+
 ## Build and test
 
 Build:

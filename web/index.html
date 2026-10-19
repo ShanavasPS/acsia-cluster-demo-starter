@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Instrument Cluster</title>
+  <link rel="stylesheet" href="car/host.css">
+  <link rel="stylesheet" href="app/cluster.css">
+</head>
+<body>
+  <!-- The car around the app: the cluster window and the car's controls. The app draws only inside #cluster. -->
+  <main class="host">
+    <div class="screen" id="screen">
+      <div id="cluster"></div>
+    </div>
+    <div class="controls" id="controls">
+      <span class="label">Instrument cluster · 528 × 692</span>
+      <button type="button" id="drive">Drive</button>
+      <button type="button" id="park">Park</button>
+      <span class="readout" id="readout" title="What the car reports, whatever the cluster shows"></span>
+    </div>
+  </main>
+
+  <!-- Data files, bundled as scripts so they load from disk: read them with window.FILES["docs/signals.csv"]. -->
+  <script src="docs/signals.csv.js"></script>
+  <script src="sim/drive-cycle.csv.js"></script>
+
+  <!-- The simulated car (window.car) and the page around the app. -->
+  <script src="car/car.js"></script>
+  <script src="car/host.js"></script>
+
+  <!-- The cluster app. Plain scripts, loaded in order; list new app files here. -->
+  <script src="app/cluster.js"></script>
+</body>
+</html>

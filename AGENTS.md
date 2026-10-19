@@ -2,6 +2,8 @@
 
 Android instrument cluster MVP. Kotlin, Jetpack Compose, single `app` module.
 
+The web version in `web/` is separate, with its own `AGENTS.md`. These rules do not apply there.
+
 ## Commands
 - Build: `./gradlew assembleDebug`
 - Unit tests (JVM, includes Robolectric Compose tests): `./gradlew testDebugUnitTest`

@@ -1,0 +1,24 @@
+/* The page around the cluster window. The app's own styles are in app/cluster.css. */
+html, body { margin: 0; height: 100%; background: #05080F; color: #8FB3D9;
+  font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
+.host { min-height: 100%; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: 20px; padding: 24px 16px; box-sizing: border-box; }
+
+/* The window is always 528 × 692 design px; host.js scales it to fit the browser window. */
+.screen { width: 528px; height: 692px; flex: none; transform-origin: top center;
+  border-radius: 6px; box-shadow: 0 0 0 1px #1B2C48, 0 24px 80px rgba(0, 0, 0, 0.6); overflow: hidden; }
+#cluster { position: relative; width: 528px; height: 692px; overflow: hidden; background: #000; }
+
+.controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px; }
+.controls .label { color: #4D6C96; margin-right: 6px; }
+.controls button { font: inherit; color: #F7F9FC; background: #10203A; border: 1px solid #1B2C48;
+  border-radius: 6px; padding: 6px 14px; cursor: pointer; }
+.controls button:hover { border-color: #4D6C96; }
+.controls button[aria-pressed="true"] { border-color: #6DC1EC; color: #6DC1EC; }
+.controls .readout { font-variant-numeric: tabular-nums; min-width: 22ch; color: #4D6C96; }
+
+/* index.html?view=cluster: only the window, at its real size, for screenshots. */
+.cluster-only .host { padding: 0; justify-content: flex-start; align-items: flex-start; }
+.cluster-only .screen { border-radius: 0; box-shadow: none; transform: none !important; }
+.cluster-only .controls { display: none; }
